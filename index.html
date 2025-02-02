@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }   
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <!-- Full-screen background video -->
+    <video class="background-video" autoplay loop muted>
+        <source src="imgase/Purple 3D Back To School Video (1).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 relative z-10">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2 md:mb-0 text-white">Friends</h1>
+        <input type="text" id="search" placeholder="Search by title..." 
+            class="border p-3 w-full md:w-1/2 lg:max-w-md text-lg rounded-lg shadow-md" 
+            onkeyup="filterImages()">
+    </div>
+
+    <!-- Gallery Section -->
+    <div id="gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 relative z-10">
+        <a href="sami.html">
+            <div class="image-box text-center">
+                <img src="imgase/photo_6123168465855562493_x.jpg" alt="Friend 1" class="w-full h-60 md:h-80 object-cover rounded-lg">
+                <p class="title mt-2 text-lg font-semibold text-white">Sami</p>
+            </div>
+        </a>
+        <a href="javed.html">
+            <div class="image-box text-center">
+                <img src="imgase/photo_6123168465855562494_x.jpg" alt="Friend 2" class="w-full h-60 md:h-80 object-cover rounded-lg">
+                <p class="title mt-2 text-lg font-semibold text-white">Javed</p>
+            </div>
+        </a>
+        <a href="zayed.html">
+            <div class="image-box text-center">
+                <img src="imgase/photo_6123168465855562495_x.jpg" alt="Friend 3" class="w-full h-60 md:h-80 object-cover rounded-lg">
+                <p class="title mt-2 text-lg font-semibold text-white">Zayed</p>
+            </div>
+        </a>
+        <a href="sakib.html">
+            <div class="image-box text-center">
+                <img src="imgase/photo_6123168465855562496_x.jpg" alt="Friend 4" class="w-full h-60 md:h-80 object-cover rounded-lg">
+                <p class="title mt-2 text-lg font-semibold text-white">Sakib</p>
+            </div>
+        </a>
+        <a href="eve.html">
+            <div class="image-box text-center">
+                <video controls class="w-full h-60 md:h-80 object-cover rounded-lg">
+                    <source src="imgase/IMG_1866.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title mt-2 text-lg font-semibold text-white">Eve</p>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        function filterImages() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let images = document.querySelectorAll(".image-box");
+
+            images.forEach(image => {
+                let title = image.querySelector(".title").textContent.toLowerCase();
+                if (title.includes(input)) {
+                    image.style.display = "block";
+                } else {
+                    image.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
